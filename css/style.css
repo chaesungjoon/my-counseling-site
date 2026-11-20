@@ -1,11 +1,126 @@
 /* ==========================================================
    style.css - Mindful Path Counseling
    Shared styles for every page
+
+   Design: minimal, lots of white space, a green-to-light-blue
+   header, all text lowercase, Roboto for everything.
+
+   Contents
+   1.  Color and size variables
+   2.  Base styles (font, lowercase, links, images)
+   3.  Header and navigation
+   4.  Page layout containers
+   5.  Homepage banner and welcome section
+   6.  Page banners (title strip + breadcrumb)
+   7.  Section labels, intros, notes, and notices
+   8.  Buttons
+   9.  Card grids (values, services, articles)
+   10. About page
+   11. Counselor cards
+   12. Resources page (quick links, FAQ, appointment form)
+   13. Call-to-action band
+   14. Footer
+   15. Responsive: screens under 600px
    ========================================================== */
 
-/* ----- Base ----- */
+
+/* ----------------------------------------------------------
+   1. COLOR AND SIZE VARIABLES
+   Change a color here and it updates everywhere it is used.
+   ---------------------------------------------------------- */
+:root {
+  --header-green: #c3ecd6;   /* light green (left side of header) */
+  --header-blue: #bfe6f6;    /* light blue (right side of header) */
+  --soft-green: #e6f7ee;     /* very light tints for the call-to-action band */
+  --soft-blue: #e4f3fa;
+
+  --accent: #1d7a6e;         /* teal: buttons, labels, links */
+  --accent-dark: #155c53;    /* darker teal: hover states */
+
+  --heading: #173430;        /* headings and header text */
+  --text: #2b3a38;           /* body text */
+  --text-muted: #56676a;     /* secondary text */
+
+  --bg: #ffffff;             /* page background */
+  --bg-soft: #f3f9f7;        /* light mint for banners and notices */
+  --border: #dde9e6;         /* light borders around cards */
+  --input-border: #7f9a95;   /* form field borders (3:1 contrast) */
+
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(23, 52, 48, 0.07);
+  --max-width: 1100px;       /* widest the content gets on big screens */
+}
+
+
+/* ----------------------------------------------------------
+   2. BASE STYLES
+   ---------------------------------------------------------- */
+
+/* Width and height include padding and border (easier sizing) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling for links like "#appointment" (skipped if the user prefers less motion) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
-  margin: 0;  /* removes the browser's default white gap around the page */
+  margin: 0;                                  /* remove the browser's default gap */
+  font-family: "Roboto", Arial, sans-serif;   /* Roboto everywhere; Arial if it fails to load */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  text-transform: lowercase;                  /* all text lowercase (headings and buttons inherit this) */
+}
+
+/* Headings: Roboto, dark green-gray, tighter line spacing */
+h1,
+h2,
+h3 {
+  margin: 0 0 0.75rem;
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 4.5vw, 2.75rem);  /* scales with screen width */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-dark);
+}
+
+/* Visible outline when moving through the page with the Tab key */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Every image shrinks to fit its container instead of overflowing */
@@ -14,50 +129,359 @@ img {
   height: auto;
 }
 
-/* ----- Homepage banner ----- */
+/* Form fields use the site font, and show text exactly as the user types it */
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+/* Dropdowns and buttons don't pick up lowercase on their own, so pass it down */
+select,
+button {
+  text-transform: inherit;
+}
+
+input,
+textarea {
+  text-transform: none;
+}
+
+
+/* ----------------------------------------------------------
+   3. HEADER AND NAVIGATION
+   ---------------------------------------------------------- */
+
+/* Flexbox: site name on the left, nav on the right */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem max(1.5rem, (100% - var(--max-width)) / 2);  /* lines up with the page content */
+  background: linear-gradient(90deg, var(--header-green), var(--header-blue));  /* green to light blue */
+}
+
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.site-name:hover {
+  color: var(--accent-dark);
+}
+
+/* Horizontal nav bar */
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;    /* remove bullet points */
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;              /* pill shape */
+  color: var(--heading);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect: soft white pill behind the link */
+.nav-list a:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--accent-dark);
+}
+
+/* Current page: solid white pill */
+.nav-list a.active {
+  background: #ffffff;
+  color: var(--accent-dark);
+}
+
+
+/* ----------------------------------------------------------
+   4. PAGE LAYOUT CONTAINERS
+   These sections stay centered and never wider than 1100px,
+   with 1.5rem of space on each side on small screens.
+   ---------------------------------------------------------- */
+.hero,
+.content-section,
+.split-section,
+.disclaimer,
+.page-links,
+.crisis-notice,
+.cta-band {
+  width: min(100% - 3rem, var(--max-width));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-section,
+.split-section {
+  padding: 3.5rem 0;
+}
+
+/* Keep paragraphs to a comfortable reading width on wide screens */
+.content-section > p:not(.notice) {
+  max-width: 75ch;
+}
+
+
+/* ----------------------------------------------------------
+   5. HOMEPAGE BANNER AND WELCOME SECTION
+   ---------------------------------------------------------- */
+
+/* Full-width banner photo */
 .banner-image {
   display: block;
   width: 100%;
   height: clamp(180px, 30vw, 420px);  /* grows with screen width, between 180px and 420px */
-  object-fit: cover;
+  object-fit: cover;                  /* crops instead of stretching */
   object-position: center;
 }
 
-/* ----- Section labels (e.g., "who we are", "our mission") ----- */
+.hero {
+  padding: 3.5rem 0 2rem;
+}
+
+.hero-text {
+  max-width: 760px;   /* keeps lines short enough to read comfortably */
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+
+/* ----------------------------------------------------------
+   6. PAGE BANNERS (title strip + breadcrumb on inner pages)
+   ---------------------------------------------------------- */
+.page-banner {
+  padding: 3rem max(1.5rem, (100% - var(--max-width)) / 2);  /* full-width strip, text lines up with content */
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-banner h1 {
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb span[aria-hidden="true"] {
+  margin: 0 0.4rem;   /* space around the ">" */
+}
+
+
+/* ----------------------------------------------------------
+   7. SECTION LABELS, INTROS, NOTES, AND NOTICES
+   ---------------------------------------------------------- */
+
+/* Small teal label above a heading (e.g., "who we are") */
 .eyebrow {
   margin: 0 0 0.25rem;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
-  color: #1d7a6e;  /* teal accent */
+  color: var(--accent);
 }
 
 .eyebrow + h2 {
   margin-top: 0;
 }
 
-/* ----- About page image ----- */
+/* Intro paragraph under a section heading */
+.section-intro {
+  max-width: 70ch;
+  color: var(--text-muted);
+}
+
+/* Small print at the end of a section */
+.note {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Highlighted boxes: homepage disclaimer, profile notice, crisis notice */
+.disclaimer,
+.notice {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+}
+
+.disclaimer {
+  margin-bottom: 3.5rem;
+}
+
+.disclaimer h2,
+.crisis-notice h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer p:last-child,
+.notice p:last-child {
+  margin-bottom: 0;
+}
+
+.crisis-notice {
+  margin-top: 2rem;
+}
+
+
+/* ----------------------------------------------------------
+   8. BUTTONS (links styled as buttons, plus the form button)
+   ---------------------------------------------------------- */
+.hero-buttons,
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;     /* pill shape */
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Filled teal button */
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
+}
+
+/* Outline button */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   9. CARD GRIDS (values, services, articles)
+   Grid: as many columns as fit, each at least 240px wide.
+   ---------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;   /* the values grid is a <ul>, so remove its bullets */
+}
+
+.card {
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Articles are longer, so their columns are wider */
+.article-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.article-card ul,
+.article-card ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.article-card li {
+  margin-bottom: 0.35rem;
+}
+
+
+/* ----------------------------------------------------------
+   10. ABOUT PAGE
+   ---------------------------------------------------------- */
+.split-text {
+  max-width: 70ch;
+}
+
+/* "Who we are" photo, centered under the text */
 .split-image {
   display: block;
-  margin: 2rem auto;   /* auto left/right margins center the image */
   width: 100%;
   max-width: 600px;
+  margin: 2rem auto 0;   /* auto left/right margins center it */
   border-radius: 16px;
 }
 
-/* ----- Counselor cards: small round photo on the top edge of each card ----- */
+/* "What to expect" numbered steps */
+.steps-list {
+  max-width: 70ch;
+  padding-left: 1.25rem;
+}
+
+.steps-list li {
+  margin-bottom: 0.75rem;
+}
+
+.steps-list li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+
+/* ----------------------------------------------------------
+   11. COUNSELOR CARDS
+   Small round photo sitting on the top edge of each card.
+   ---------------------------------------------------------- */
 .counselor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* side by side on desktop, stacked on phones */
-  gap: 3.5rem 2rem;   /* extra space between rows for the photos that stick up */
-  margin-top: 4rem;   /* room above the first row of photos */
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  row-gap: 3.5rem;    /* extra room between rows for the photos that stick up */
+  margin-top: 4.5rem; /* room above the first row of photos */
 }
 
 .counselor-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);  /* soft shadow around the card */
-  padding: 0 1.5rem 1.5rem;
+  padding-top: 0;
   text-align: center;
 }
 
@@ -65,29 +489,298 @@ img {
   display: block;
   width: 90px;
   height: 90px;
-  object-fit: cover;              /* crops into a circle without stretching the face */
+  object-fit: cover;              /* crops into a circle without stretching */
   object-position: center top;    /* keeps the face in view */
-  border-radius: 50%;             /* turns the square into a circle */
-  border: 3px solid #1d7a6e;      /* teal ring, like the colored ring in your example */
-  margin: -48px auto 1rem;        /* pulls the photo up about half its height so it sits on the card's edge */
+  border-radius: 50%;             /* circle */
+  border: 3px solid var(--accent);
+  margin: -48px auto 1rem;        /* pulls the photo up so it sits on the card's top edge */
+  background: #ffffff;
 }
 
-/* Counselor title as a rounded pill, like the name buttons in your example */
+/* Counselor title as a rounded pill */
 .counselor-role {
   display: inline-block;
   margin: 0 0 1rem;
   padding: 0.35rem 1rem;
-  border-radius: 999px;   /* fully rounded ends */
-  background: #1d7a6e;
+  border-radius: 999px;
+  background: var(--accent);
   color: #ffffff;
   font-size: 0.85rem;
 }
 
 /* Education / credentials / specialties */
+.counselor-details {
+  margin: 0 0 1rem;
+}
+
 .counselor-details dt {
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--heading);
 }
 
 .counselor-details dd {
-  margin: 0 0 0.75rem;  /* removes the browser's default left indent */
+  margin: 0 0 0.75rem;   /* remove the browser's default left indent */
+}
+
+
+/* ----------------------------------------------------------
+   12. RESOURCES PAGE
+   ---------------------------------------------------------- */
+
+/* "On this page" quick links, shown as outline pills */
+.page-links {
+  margin-top: 2rem;
+}
+
+.page-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-links a {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.page-links a:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* FAQ: built-in <details> elements with a +/- sign */
+.faq-item {
+  max-width: 800px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item summary {
+  display: flex;                    /* also hides the default triangle in most browsers */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-weight: 500;
+  color: var(--heading);
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;                    /* hides the default triangle in Safari */
+}
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.faq-item[open] summary::after {
+  content: "\2212";                 /* minus sign when the answer is open */
+}
+
+.faq-item p {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+}
+
+/* Appointment section: text and form side by side, stacking when there is not enough room */
+#appointment {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.appointment-form h3 {
+  margin-bottom: 1.25rem;
+}
+
+/* Each label + field pair stacks vertically */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.form-group > label {
+  font-weight: 500;
+  color: var(--heading);
+}
+
+/* Text fields, dropdowns, and the message box */
+.appointment-form input[type="text"],
+.appointment-form input[type="email"],
+.appointment-form input[type="tel"],
+.appointment-form select,
+.appointment-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background: #fbfdfd;
+  color: var(--text);
+}
+
+.appointment-form textarea {
+  resize: vertical;   /* can only be resized taller, not wider */
+}
+
+/* Preferred contact method: radio buttons in a row */
+.contact-method {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  border: 0;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.contact-method legend {
+  padding: 0;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  color: var(--heading);
+}
+
+.contact-method label,
+.checkbox-group label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: 400;
+}
+
+.contact-method input,
+.checkbox-group input {
+  accent-color: var(--accent);   /* teal radio buttons and checkbox */
+  margin-top: 0.3rem;
+}
+
+/* Full-width submit button, like the design template */
+.appointment-form .btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.form-status {
+  margin: 1rem 0 0;
+  font-weight: 500;
+}
+
+
+/* ----------------------------------------------------------
+   13. CALL-TO-ACTION BAND
+   ---------------------------------------------------------- */
+.cta-band {
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--soft-green), var(--soft-blue));
+  text-align: center;
+}
+
+.cta-band p {
+  color: var(--text-muted);
+}
+
+.cta-band .button-group {
+  justify-content: center;
+}
+
+
+/* ----------------------------------------------------------
+   14. FOOTER
+   ---------------------------------------------------------- */
+.site-footer {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(90deg, var(--header-green), var(--header-blue));  /* matches the header */
+  color: var(--heading);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
+}
+
+.site-footer a {
+  color: var(--accent-dark);
+}
+
+.photo-credit {
+  font-size: 0.8rem;
+}
+
+
+/* ----------------------------------------------------------
+   15. RESPONSIVE: SCREENS UNDER 600PX (phones)
+   Everything stacks vertically in a single column.
+   ---------------------------------------------------------- */
+@media (max-width: 600px) {
+
+  /* Header: site name on top, nav underneath */
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  /* Nav links stack vertically and fill the width */
+  .main-nav,
+  .nav-list {
+    width: 100%;
+  }
+
+  .nav-list {
+    flex-direction: column;
+  }
+
+  .nav-list a {
+    padding: 0.6rem 1rem;
+  }
+
+  /* All grids become a single column */
+  .card-grid,
+  #appointment {
+    grid-template-columns: 1fr;
+  }
+
+  /* Buttons stack and stretch to full width */
+  .hero-buttons,
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Less space between sections on small screens */
+  .content-section,
+  .split-section {
+    padding: 2.5rem 0;
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+  }
+
+  .page-banner {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .cta-band {
+    padding: 2rem 1.25rem;
+  }
 }
