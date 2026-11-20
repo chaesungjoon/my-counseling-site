@@ -1082,3 +1082,39 @@ textarea {
 .content-section > p.section-intro {
   max-width: none;
 }
+
+/* ----------------------------------------------------------
+   JUSTIFIED PARAGRAPHS
+   Lines stretch so both the left and right edges are even.
+   Only used on wide paragraphs: in narrow cards and on phones,
+   justified lines get large gaps between words, so those stay
+   left-aligned.
+   ---------------------------------------------------------- */
+:root {
+  --paragraph-align: justify;
+}
+
+.hero-text p,
+.content-section > p,
+.split-text p,
+.disclaimer p,
+.notice p,
+.faq-item p {
+  text-align: var(--paragraph-align);
+}
+
+/* Phones (under 600px): back to left-aligned */
+@media (max-width: 600px) {
+  :root {
+    --paragraph-align: left;
+  }
+}
+
+/* Homepage welcome: let the heading use the full width, keep paragraphs at a readable width */
+.hero-text {
+  max-width: none;
+}
+
+.hero-text p {
+  max-width: 760px;
+}
