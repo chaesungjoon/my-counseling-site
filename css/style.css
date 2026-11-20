@@ -1,0 +1,24 @@
+/* ==========================================================
+   style.css - Mindful Path Counseling
+   Shared styles for every page
+   ========================================================== */
+
+/* ----- Base ----- */
+body {
+  margin: 0;  /* removes the browser's default white gap around the page */
+}
+
+/* Every image shrinks to fit its container instead of overflowing */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ----- Homepage banner ----- */
+.banner-image {
+  display: block;
+  width: 100%;                        /* always as wide as the screen */
+  height: clamp(180px, 30vw, 420px);  /* grows with screen width, between 180px and 420px tall */
+  object-fit: cover;                  /* crops to fill the space instead of stretching */
+  object-position: center;            /* keeps the middle of the photo visible */
+}
