@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== PAGE SETTINGS ===== -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones (needed for responsive design) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Self-help articles, frequently asked questions, and an appointment request form from Mindful Path Counseling, a fictional student project.">
+  <title>Resources | Mindful Path Counseling</title>
+
+  <!-- Roboto font from Google Fonts (used for all text on the site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Shared stylesheet and script (the same two lines go on every page) -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER: site name + main navigation (same on every page) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="homepage.html">Mindful Path Counseling</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <!-- "active" + aria-current mark the page you are on (Resources on this page) -->
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="counselorinfo.html">Counselors</a></li>
+        <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- Page banner: page title + breadcrumb trail -->
+    <section class="page-banner">
+      <h1>Resources</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html">Home</a>
+        <span aria-hidden="true">&gt;</span>
+        <span aria-current="page">Resources</span>
+      </nav>
+    </section>
+
+    <!-- Quick links that jump to each section of this page -->
+    <nav class="page-links" aria-label="On this page">
+      <ul>
+        <li><a href="#articles">Self-help articles</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#appointment">Request an appointment</a></li>
+      </ul>
+    </nav>
+
+    <!-- Urgent help: real crisis contacts, kept at the top so they are easy to find -->
+    <section class="notice crisis-notice" aria-labelledby="urgent-heading">
+      <h2 id="urgent-heading">Need help right now?</h2>
+      <p>Mindful Path Counseling is a fictional service and cannot respond to emergencies. If you or someone else is in immediate danger, call <strong>911</strong>. In the U.S., you can call or text <a href="tel:988"><strong>988</strong></a> or chat at <a href="https://988lifeline.org">988lifeline.org</a> to reach the 988 Suicide &amp; Crisis Lifeline, which is free and available 24/7.</p>
+    </section>
+
+    <!-- ===== SELF-HELP ARTICLES ===== -->
+    <section class="content-section" id="articles" aria-labelledby="articles-heading">
+      <p class="eyebrow">Self-help library</p>
+      <h2 id="articles-heading">Self-help articles</h2>
+      <p class="section-intro">These short articles share simple, everyday strategies that many people find helpful. They are general educational information written for this student project and are not a substitute for professional care.</p>
+
+      <div class="card-grid article-grid">
+
+        <!-- Article 1 -->
+        <article class="card article-card">
+          <h3>The 5-4-3-2-1 Grounding Technique</h3>
+          <p class="article-meta">Anxiety support · 3-minute read</p>
+          <p>When worry starts to spiral, grounding can help bring your attention back to the present moment. The 5-4-3-2-1 technique uses your five senses to gently shift your focus away from anxious thoughts and toward what is happening around you right now.</p>
+          <p>Wherever you are, slowly notice:</p>
+          <ul>
+            <li><strong>5</strong> things you can see</li>
+            <li><strong>4</strong> things you can touch</li>
+            <li><strong>3</strong> things you can hear</li>
+            <li><strong>2</strong> things you can smell</li>
+            <li><strong>1</strong> thing you can taste</li>
+          </ul>
+          <p>Take your time with each step. There are no wrong answers, and it is fine to repeat the exercise. Many people find it easier to use in stressful moments if they practice it when they already feel calm.</p>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="card article-card">
+          <h3>Box Breathing for Stressful Moments</h3>
+          <p class="article-meta">Stress management · 2-minute read</p>
+          <p>Box breathing is a simple breathing pattern that can help slow things down when you feel tense or overwhelmed. It gets its name from its four equal steps, like the four sides of a box.</p>
+          <ol>
+            <li>Breathe in slowly through your nose for a count of four.</li>
+            <li>Hold your breath for a count of four.</li>
+            <li>Breathe out slowly through your mouth for a count of four.</li>
+            <li>Hold again for a count of four.</li>
+          </ol>
+          <p>Repeat the cycle three or four times. If holding your breath feels uncomfortable or you feel lightheaded, shorten the counts or simply return to your normal breathing.</p>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="card article-card">
+          <h3>Building a Calming Evening Routine</h3>
+          <p class="article-meta">Healthy routines · 3-minute read</p>
+          <p>Rest affects mood, focus, and how we handle stress. A consistent evening routine can signal to your body and mind that it is time to wind down.</p>
+          <ul>
+            <li>Go to bed and wake up at roughly the same times each day, including weekends.</li>
+            <li>Set screens aside 30 to 60 minutes before bed.</li>
+            <li>Enjoy caffeine earlier in the day rather than in the afternoon or evening.</li>
+            <li>Choose a relaxing activity, such as reading, gentle stretching, or quiet music.</li>
+            <li>Keep your bedroom cool, dark, and quiet.</li>
+          </ul>
+          <p>Start with one or two changes rather than all of them at once. If sleep problems continue for several weeks, it is a good idea to talk with a healthcare provider.</p>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="card article-card">
+          <h3>Setting Healthy Boundaries</h3>
+          <p class="article-meta">Relationships · 3-minute read</p>
+          <p>Boundaries are the limits we set to protect our time, energy, and well-being. Healthy boundaries can make relationships with family, friends, partners, and coworkers feel more respectful and less draining.</p>
+          <ul>
+            <li><strong>Notice your limits.</strong> Pay attention to situations that leave you feeling resentful, exhausted, or uncomfortable.</li>
+            <li><strong>Be clear and kind.</strong> Use "I" statements, such as "I can't take on extra work this week, but I can help next Monday."</li>
+            <li><strong>Start small.</strong> Practice in lower-stakes situations before tackling harder conversations.</li>
+            <li><strong>Expect some discomfort.</strong> Feeling guilty at first is common and usually fades with practice.</li>
+          </ul>
+          <p>Boundaries are not about pushing people away. They help others understand what you need so your relationships can stay healthy.</p>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="card article-card">
+          <h3>Journaling to Untangle Your Thoughts</h3>
+          <p class="article-meta">Self-reflection · 2-minute read</p>
+          <p>Writing things down can make busy thoughts feel more manageable. Journaling does not need to be long or polished; a few minutes is enough. Try one of these prompts:</p>
+          <ul>
+            <li>What is taking up the most space in my mind today?</li>
+            <li>What is one thing I handled well this week?</li>
+            <li>What is within my control right now, and what is not?</li>
+            <li>What is one small thing I can do tomorrow to take care of myself?</li>
+          </ul>
+          <p>Over time, looking back at your entries can help you notice patterns in your mood, your stress, and what tends to help.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== FAQ: click a question to open its answer (built-in HTML <details>, no JavaScript needed) ===== -->
+    <section class="content-section" id="faq" aria-labelledby="faq-heading">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-heading">Frequently asked questions</h2>
+
+      <details class="faq-item">
+        <summary>Is Mindful Path Counseling a real counseling service?</summary>
+        <p>No. Mindful Path Counseling is a fictional service created for a student website project. It does not provide real counseling, diagnosis, treatment, or emergency services.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What happens when I submit the appointment request form?</summary>
+        <p>The form is a demonstration only. Information you enter is not sent or stored anywhere.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I choose a counselor?</summary>
+        <p>Read the profiles on the Meet the Counselors page and look for specialties that match what you would like support with. You can also select "No preference" on the request form.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the difference between individual, couples, and family counseling?</summary>
+        <p>Individual counseling focuses on one person's concerns and goals. Couples counseling helps partners improve communication and work through disagreements together. Family counseling brings family members together to address communication, transitions, and shared concerns.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can the self-help articles replace counseling?</summary>
+        <p>No. The articles share general strategies that some people find helpful, but they are not a substitute for professional care, medical advice, or emergency services.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What should I do in an emergency?</summary>
+        <p>Call 911 if you or someone else is in immediate danger. In the U.S., you can also call or text 988 to reach the 988 Suicide &amp; Crisis Lifeline.</p>
+      </details>
+    </section>
+
+    <!-- ===== APPOINTMENT REQUEST: text on one side, form card on the other ===== -->
+    <!-- id="appointment" is where every "Request an Appointment" button on the site jumps to -->
+    <section class="split-section" id="appointment" aria-labelledby="appointment-heading">
+      <div class="split-text">
+        <p class="eyebrow">Request an appointment</p>
+        <h2 id="appointment-heading">How can we help?</h2>
+        <p>Tell us a little about what you are looking for, and choose a service and counselor if you have a preference. In this fictional scenario, a member of our team would follow up to schedule a first session.</p>
+        <p class="note"><strong>Demo form:</strong> This form is part of a student project. Nothing you enter is sent or stored, so please do not enter real personal information.</p>
+      </div>
+
+      <!-- Form card (JavaScript validation will be added in Step 7) -->
+      <form class="card appointment-form" id="appointment-form">
+        <h3>Appointment request</h3>
+
+        <div class="form-group">
+          <label for="full-name">Full name</label>
+          <input type="text" id="full-name" name="full-name" autocomplete="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service" name="service" required>
+            <option value="">Choose a service</option>
+            <option>Individual Counseling</option>
+            <option>Couples Counseling</option>
+            <option>Family Counseling</option>
+            <option>Anxiety Support</option>
+            <option>Depression Support</option>
+            <option>Stress Management</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="counselor">Preferred counselor</label>
+          <select id="counselor" name="counselor">
+            <option>No preference</option>
+            <option>Maya Bennett</option>
+            <option>Daniel Kim</option>
+            <option>Sofia Ramirez</option>
+          </select>
+        </div>
+
+        <fieldset class="form-group contact-method">
+          <legend>Preferred contact method</legend>
+          <label><input type="radio" name="contact-method" value="email" checked> Email</label>
+          <label><input type="radio" name="contact-method" value="phone"> Phone</label>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="message">What would you like support with? (optional)</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="demo-ack" name="demo-ack" required>
+            I understand this is a demonstration form and no information is sent.
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Request</button>
+
+        <!-- JavaScript will show success or error messages here in Step 7 -->
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Mindful Path Counseling</p>
+    <p>A fictional website created for educational purposes.</p>
+  </footer>
+
+</body>
+</html>

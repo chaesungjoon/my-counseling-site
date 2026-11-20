@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== PAGE SETTINGS ===== -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones (needed for responsive design) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Mindful Path Counseling, a fictional counseling practice created for a student website project.">
+  <title>About | Mindful Path Counseling</title>
+
+  <!-- Roboto font from Google Fonts (used for all text on the site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Shared stylesheet and script (the same two lines go on every page) -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER: site name + main navigation (same on every page) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="homepage.html">Mindful Path Counseling</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <!-- "active" + aria-current mark the page you are on (About on this page) -->
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="about.html" class="active" aria-current="page">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="counselorinfo.html">Counselors</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- Page banner: page title + breadcrumb trail -->
+    <section class="page-banner">
+      <h1>About Us</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html">Home</a>
+        <span aria-hidden="true">&gt;</span>
+        <span aria-current="page">About</span>
+      </nav>
+    </section>
+
+    <!-- Who we are: text on one side, photo on the other -->
+    <section class="split-section" aria-labelledby="who-heading">
+      <div class="split-text">
+        <p class="eyebrow">Who we are</p>
+        <h2 id="who-heading">A calm place to find your footing</h2>
+        <p>Mindful Path Counseling is a fictional counseling practice imagined as a small, welcoming space where people can slow down, talk openly, and work through what is on their minds. Our team supports individuals, couples, and families who are navigating stress, change, conflict, or difficult emotions.</p>
+        <p>Our name reflects how we think about growth: not as a single leap, but as a path taken one step at a time. Some steps feel easy, others take patience, and every person moves at their own pace. Our role is to walk alongside clients, offer perspective, and help them build skills they can keep using long after a session ends.</p>
+      </div>
+
+      <!-- Update src if you renamed the file, and edit alt so it describes what YOUR photo shows -->
+      <img class="split-image" src="images/image1.avif"">
+    </section>
+
+    <!-- Mission statement -->
+    <section class="content-section" aria-labelledby="mission-heading">
+      <p class="eyebrow">Our mission</p>
+      <h2 id="mission-heading">Support that meets you where you are</h2>
+      <p>Our mission is to make counseling feel approachable. We aim to offer a respectful, judgment-free environment where every client feels heard, and where support is shaped around each person's goals, values, and circumstances rather than a one-size-fits-all plan.</p>
+    </section>
+
+    <!-- Values: four short cards -->
+    <section class="content-section" aria-labelledby="values-heading">
+      <p class="eyebrow">What guides us</p>
+      <h2 id="values-heading">Our values</h2>
+      <ul class="card-grid values-list">
+        <li class="card">
+          <h3>Compassion</h3>
+          <p>We approach every conversation with warmth, patience, and genuine care.</p>
+        </li>
+        <li class="card">
+          <h3>Respect</h3>
+          <p>We honor each client's experiences, identity, and right to make their own choices.</p>
+        </li>
+        <li class="card">
+          <h3>Collaboration</h3>
+          <p>Counseling is a partnership. Clients and counselors set goals and review progress together.</p>
+        </li>
+        <li class="card">
+          <h3>Growth</h3>
+          <p>We focus on practical, realistic steps that build confidence over time.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- What to expect: numbered steps -->
+    <section class="content-section" aria-labelledby="expect-heading">
+      <p class="eyebrow">Getting started</p>
+      <h2 id="expect-heading">What to expect</h2>
+      <ol class="steps-list">
+        <li><strong>Send a request.</strong> Fill out the appointment request form on our Resources page with a few details about what you are looking for.</li>
+        <li><strong>Find a good fit.</strong> Choose a counselor whose specialties match your needs, or let our team suggest one.</li>
+        <li><strong>Your first session.</strong> You and your counselor talk about what brought you in, what you hope will change, and how you would like to work together.</li>
+        <li><strong>Ongoing support.</strong> Together, you set goals, try new strategies, and adjust the plan as you go.</li>
+      </ol>
+    </section>
+
+    <!-- Call-to-action band -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready to take the first step?</h2>
+      <p>Meet our counselors or send an appointment request to get started.</p>
+      <div class="button-group">
+        <a class="btn btn-primary" href="resources.html#appointment">Request an Appointment</a>
+        <a class="btn btn-secondary" href="counselorinfo.html">Meet the Counselors</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page, except photo credits) ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Mindful Path Counseling</p>
+    <p>A fictional website created for educational purposes.</p>
+
+    <!-- Photo credit for the About page photo (fill in, or delete these lines if no credit is needed) -->
+    <p class="photo-credit">
+      Photo by <a href="https://unsplash.com/@gpthree">George Pagan III</a>
+      on <a href="https://unsplash.com/photos/a-yellow-sign-that-reads-your-mental-health-matters-r5WfOGUu0cw">Unsplash</a>
+    </p>
+  </footer>
+
+</body>
+</html>

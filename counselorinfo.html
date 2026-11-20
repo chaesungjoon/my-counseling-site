@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== PAGE SETTINGS ===== -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones (needed for responsive design) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the fictional counselors of Mindful Path Counseling, a student website project.">
+  <title>Counselors | Mindful Path Counseling</title>
+
+  <!-- Roboto font from Google Fonts (used for all text on the site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Shared stylesheet and script (the same two lines go on every page) -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER: site name + main navigation (same on every page) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="homepage.html">Mindful Path Counseling</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <!-- "active" + aria-current mark the page you are on (Counselors on this page) -->
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="counselorinfo.html" class="active" aria-current="page">Counselors</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- Page banner: page title + breadcrumb trail -->
+    <section class="page-banner">
+      <h1>Our Counselors</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html">Home</a>
+        <span aria-hidden="true">&gt;</span>
+        <span aria-current="page">Counselors</span>
+      </nav>
+    </section>
+
+    <!-- Counselor team: profile notice + three counselor cards -->
+    <section class="content-section" aria-labelledby="team-heading">
+      <p class="eyebrow">Our team</p>
+      <h2 id="team-heading">The people behind Mindful Path</h2>
+
+      <p class="notice"><strong>Profile notice:</strong> The following counselor names, biographies, educational backgrounds, and credentials are fictional and were created only for this educational website project.</p>
+
+      <div class="card-grid counselor-grid">
+
+        <!-- Counselor 1 -->
+        <article class="card counselor-card">
+          <!-- Profile photo (AI-generated, since the counselors are fictional) -->
+          <img class="counselor-photo" src="images/counselor1.jpg"">
+          <h3>Maya Bennett</h3>
+          <p class="counselor-role">Licensed Professional Counselor</p>
+          <dl class="counselor-details">
+            <dt>Education</dt>
+            <dd>M.A. in Clinical Mental Health Counseling, North Valley University</dd>
+            <dt>Credentials</dt>
+            <dd>Licensed Professional Counselor, fictional profile</dd>
+            <dt>Specialties</dt>
+            <dd>Anxiety support, stress management, life transitions, and self-esteem</dd>
+          </dl>
+          <p>Maya Bennett believes that counseling should provide a calm and respectful space where clients feel comfortable discussing their experiences. Her fictional practice focuses on helping adults recognize sources of stress, develop practical coping strategies, and approach major life changes with greater confidence.</p>
+        </article>
+
+        <!-- Counselor 2 -->
+        <article class="card counselor-card">
+           <img class="counselor-photo" src="images/counselor2.jpg">
+          <h3>Daniel Kim</h3>
+          <p class="counselor-role">Licensed Marriage and Family Therapist</p>
+          <dl class="counselor-details">
+            <dt>Education</dt>
+            <dd>M.S. in Marriage and Family Therapy, Lakeside Graduate Institute</dd>
+            <dt>Credentials</dt>
+            <dd>Licensed Marriage and Family Therapist, fictional profile</dd>
+            <dt>Specialties</dt>
+            <dd>Couples counseling, family communication, relationship conflict, and parenting concerns</dd>
+          </dl>
+          <p>Daniel Kim’s fictional counseling approach emphasizes communication, mutual understanding, and collaborative problem-solving. He works with couples and families to identify recurring patterns, discuss concerns respectfully, and develop healthier ways of responding to conflict.</p>
+        </article>
+
+        <!-- Counselor 3 -->
+        <article class="card counselor-card">
+          <img class="counselor-photo" src="images/counselor5.jpg">
+          <h3>Sofia Ramirez</h3>
+          <p class="counselor-role">Licensed Clinical Social Worker</p>
+          <dl class="counselor-details">
+            <dt>Education</dt>
+            <dd>Master of Social Work, Westbridge School of Social Services</dd>
+            <dt>Credentials</dt>
+            <dd>Licensed Clinical Social Worker, fictional profile</dd>
+            <dt>Specialties</dt>
+            <dd>Depression support, grief, adjustment difficulties, and young-adult concerns</dd>
+          </dl>
+          <p>Sofia Ramirez’s fictional practice focuses on creating a supportive and nonjudgmental environment. She helps clients explore difficult emotions, recognize available sources of support, and create realistic goals that reflect their individual circumstances.</p>
+        </article>
+
+      </div>
+
+      <p class="note">All counselor names, profiles, educational backgrounds, photos, and credentials presented on this website are fictional and were created solely for an educational project.</p>
+    </section>
+
+    <!-- Call-to-action band -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Found a counselor who feels like a good fit?</h2>
+      <p>Choose them on the appointment request form, or select "No preference" and we will help you decide.</p>
+      <div class="button-group">
+        <a class="btn btn-primary" href="resources.html#appointment">Request an Appointment</a>
+        <a class="btn btn-secondary" href="services.html">View Our Services</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Mindful Path Counseling</p>
+    <p>A fictional website created for educational purposes.</p>
+  </footer>
+
+</body>
+</html>

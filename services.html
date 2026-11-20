@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== PAGE SETTINGS ===== -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones (needed for responsive design) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Counseling services offered by Mindful Path Counseling, a fictional practice created for a student website project.">
+  <title>Services | Mindful Path Counseling</title>
+
+  <!-- Roboto font from Google Fonts (used for all text on the site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Shared stylesheet and script (the same two lines go on every page) -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== HEADER: site name + main navigation (same on every page) ===== -->
+  <header class="site-header">
+    <a class="site-name" href="homepage.html">Mindful Path Counseling</a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <!-- "active" + aria-current mark the page you are on (Services on this page) -->
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+        <li><a href="counselorinfo.html">Counselors</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- Page banner: page title + breadcrumb trail -->
+    <section class="page-banner">
+      <h1>Our Services</h1>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html">Home</a>
+        <span aria-hidden="true">&gt;</span>
+        <span aria-current="page">Services</span>
+      </nav>
+    </section>
+
+    <!-- Services: short intro + a grid of six service cards -->
+    <section class="content-section" aria-labelledby="services-heading">
+      <p class="eyebrow">What we offer</p>
+      <h2 id="services-heading">Support that fits your situation</h2>
+      <p class="section-intro">Every person's situation is different, so each of our services is flexible and shaped around the client's goals. Whether you are working through something on your own, with a partner, or as a family, the services below describe the kinds of support our fictional counseling team provides.</p>
+
+      <div class="card-grid">
+        <article class="card service-card">
+          <h3>Individual Counseling</h3>
+          <p>Individual counseling provides a private and supportive setting where clients can discuss personal concerns, emotions, relationships, and life changes. Sessions may focus on developing coping strategies, improving self-awareness, and setting realistic personal goals.</p>
+        </article>
+
+        <article class="card service-card">
+          <h3>Couples Counseling</h3>
+          <p>Couples counseling supports partners who want to improve communication, resolve recurring disagreements, or better understand one another. The counselor helps both partners discuss concerns respectfully and work toward healthier relationship patterns.</p>
+        </article>
+
+        <article class="card service-card">
+          <h3>Family Counseling</h3>
+          <p>Family counseling gives family members an opportunity to discuss communication problems, major transitions, conflict, and shared concerns. The goal is to encourage understanding, cooperation, and stronger relationships within the family.</p>
+        </article>
+
+        <article class="card service-card">
+          <h3>Anxiety Support</h3>
+          <p>Anxiety support focuses on understanding common sources of worry and recognizing patterns that may increase stress. Clients may explore grounding techniques, healthy routines, and practical strategies for responding to anxious thoughts. This service is not a substitute for medical diagnosis or emergency care.</p>
+        </article>
+
+        <article class="card service-card">
+          <h3>Depression Support</h3>
+          <p>Depression support provides a compassionate environment for discussing low mood, reduced motivation, isolation, and difficult life experiences. Counseling may help clients identify sources of support, establish manageable goals, and develop healthier daily routines. It does not guarantee a particular result or replace medical care.</p>
+        </article>
+
+        <article class="card service-card">
+          <h3>Stress Management</h3>
+          <p>Stress management helps clients identify major stressors and understand how stress affects their thoughts, emotions, and routines. Sessions may introduce time-management techniques, relaxation practices, healthy boundaries, and other practical coping strategies.</p>
+        </article>
+      </div>
+
+      <p class="note">These service descriptions are part of a fictional student project and do not describe real counseling services.</p>
+    </section>
+
+    <!-- Call-to-action band -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Not sure which service is right for you?</h2>
+      <p>Send an appointment request and tell us a little about what you are looking for.</p>
+      <div class="button-group">
+        <a class="btn btn-primary" href="resources.html#appointment">Request an Appointment</a>
+        <a class="btn btn-secondary" href="counselorinfo.html">Meet the Counselors</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Mindful Path Counseling</p>
+    <p>A fictional website created for educational purposes.</p>
+  </footer>
+
+</body>
+</html>

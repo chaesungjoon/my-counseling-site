@@ -17,8 +17,77 @@ img {
 /* ----- Homepage banner ----- */
 .banner-image {
   display: block;
-  width: 100%;                        /* always as wide as the screen */
-  height: clamp(180px, 30vw, 420px);  /* grows with screen width, between 180px and 420px tall */
-  object-fit: cover;                  /* crops to fill the space instead of stretching */
-  object-position: center;            /* keeps the middle of the photo visible */
+  width: 100%;
+  height: clamp(180px, 30vw, 420px);  /* grows with screen width, between 180px and 420px */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ----- Section labels (e.g., "who we are", "our mission") ----- */
+.eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #1d7a6e;  /* teal accent */
+}
+
+.eyebrow + h2 {
+  margin-top: 0;
+}
+
+/* ----- About page image ----- */
+.split-image {
+  display: block;
+  margin: 2rem auto;   /* auto left/right margins center the image */
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+}
+
+/* ----- Counselor cards: small round photo on the top edge of each card ----- */
+.counselor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* side by side on desktop, stacked on phones */
+  gap: 3.5rem 2rem;   /* extra space between rows for the photos that stick up */
+  margin-top: 4rem;   /* room above the first row of photos */
+}
+
+.counselor-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);  /* soft shadow around the card */
+  padding: 0 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.counselor-photo {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;              /* crops into a circle without stretching the face */
+  object-position: center top;    /* keeps the face in view */
+  border-radius: 50%;             /* turns the square into a circle */
+  border: 3px solid #1d7a6e;      /* teal ring, like the colored ring in your example */
+  margin: -48px auto 1rem;        /* pulls the photo up about half its height so it sits on the card's edge */
+}
+
+/* Counselor title as a rounded pill, like the name buttons in your example */
+.counselor-role {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;   /* fully rounded ends */
+  background: #1d7a6e;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+/* Education / credentials / specialties */
+.counselor-details dt {
+  font-weight: bold;
+}
+
+.counselor-details dd {
+  margin: 0 0 0.75rem;  /* removes the browser's default left indent */
 }
