@@ -784,3 +784,301 @@ textarea {
     padding: 2rem 1.25rem;
   }
 }
+
+/* ==========================================================
+   STEP 7 ADDITIONS
+   Paste everything below at the very BOTTOM of css/style.css.
+   16. Theme toggle button (header)
+   17. "Request with this counselor" buttons
+   18. Form error and success messages
+   19. Guided breathing exercise
+   20. Dark mode colors
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   16. THEME TOGGLE BUTTON (moon/sun in the header)
+   ---------------------------------------------------------- */
+.site-header {
+  position: relative;   /* lets the button be positioned inside the header on phones */
+}
+
+/* Push the nav to the right so the nav and the button sit together */
+.main-nav {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(23, 52, 48, 0.15);
+  border-radius: 50%;                       /* circle */
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   17. "REQUEST WITH THIS COUNSELOR" BUTTONS
+   The card becomes a flex column so the button always sits
+   at the bottom, even when the bios are different lengths.
+   ---------------------------------------------------------- */
+.counselor-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.counselor-card .counselor-role {
+  align-self: center;   /* keep the pill its natural width */
+}
+
+.counselor-card .btn {
+  margin-top: auto;     /* pushes the button to the bottom of the card */
+  align-self: center;
+}
+
+
+/* ----------------------------------------------------------
+   18. FORM ERROR AND SUCCESS MESSAGES
+   ---------------------------------------------------------- */
+:root {
+  --error: #b42318;   /* red for errors (6.5:1 contrast on white) */
+}
+
+/* Message under a field with a problem */
+.error-message {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--error);
+}
+
+/* Red border on fields with a problem (JavaScript adds aria-invalid="true") */
+.appointment-form .form-group [aria-invalid="true"] {
+  border: 2px solid var(--error);
+}
+
+/* Checkboxes can't show a border, so use an outline instead */
+.appointment-form .checkbox-group [aria-invalid="true"] {
+  outline: 2px solid var(--error);
+  outline-offset: 2px;
+}
+
+/* Message under the Send Request button */
+.form-status.error {
+  color: var(--error);
+}
+
+.form-status.success {
+  padding: 0.75rem 1rem;
+  background: var(--bg-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent-dark);
+}
+
+
+/* ----------------------------------------------------------
+   19. GUIDED BREATHING EXERCISE
+   JavaScript adds one of four classes to the circle:
+   inhale / hold-full = big, exhale / hold-empty = small.
+   The transition animates the size change over 4 seconds.
+   ---------------------------------------------------------- */
+.breathing-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 2.5rem 1.5rem;
+  background: var(--bg-soft);
+  border-radius: 20px;
+}
+
+/* Fixed-size space so the page doesn't jump when the circle grows */
+.breathing-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 240px;
+}
+
+.breathing-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--header-green), var(--header-blue));
+  transition: transform 4s ease-in-out;   /* smooth 4-second grow/shrink */
+}
+
+/* Big while breathing in and holding */
+.breathing-circle.inhale,
+.breathing-circle.hold-full {
+  transform: scale(1.5);
+}
+
+/* Normal size while breathing out and holding */
+.breathing-circle.exhale,
+.breathing-circle.hold-empty {
+  transform: scale(1);
+}
+
+.breathing-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--heading);
+}
+
+.breathing-count {
+  min-height: 1.6rem;   /* keeps the space even when the number is empty */
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+.breathing-widget .button-group {
+  justify-content: center;
+  margin-top: 0;
+}
+
+.breathing-rounds {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Faded look for disabled buttons (e.g., Stop before starting) */
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* If the visitor's device asks for less motion, skip the animation (the text still guides them) */
+@media (prefers-reduced-motion: reduce) {
+  .breathing-circle {
+    transition: none;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   20. DARK MODE
+   When JavaScript adds class="dark-mode" to <html>, these
+   variables replace the light ones, so every rule that uses
+   var(--...) switches color automatically.
+   ---------------------------------------------------------- */
+.dark-mode {
+  color-scheme: dark;            /* dark scrollbars and form controls */
+
+  --header-green: #1d3a33;
+  --header-blue: #1a3341;
+  --soft-green: #1a2c28;
+  --soft-blue: #182a33;
+
+  --accent: #5ec4b2;             /* lighter teal so it shows up on dark backgrounds */
+  --accent-dark: #8fdccf;
+
+  --heading: #e8f3f0;
+  --text: #d2dfdc;
+  --text-muted: #a7b9b5;
+
+  --bg: #111918;
+  --bg-soft: #18231f;
+  --border: #2b3a37;
+  --input-border: #6f8c86;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
+  --error: #ff9b8f;
+}
+
+/* A few places use plain white in the light theme; give them dark versions */
+.dark-mode .card,
+.dark-mode .counselor-photo {
+  background: var(--bg-soft);
+}
+
+.dark-mode .nav-list a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .nav-list a.active {
+  background: var(--bg);
+}
+
+.dark-mode .theme-toggle {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark text on the lighter teal (white would be hard to read) */
+.dark-mode .btn-primary,
+.dark-mode .btn-primary:hover,
+.dark-mode .btn-secondary:hover,
+.dark-mode .page-links a:hover,
+.dark-mode .counselor-role {
+  color: #0f1a18;
+}
+
+/* Form fields */
+.dark-mode .appointment-form input[type="text"],
+.dark-mode .appointment-form input[type="email"],
+.dark-mode .appointment-form input[type="tel"],
+.dark-mode .appointment-form select,
+.dark-mode .appointment-form textarea {
+  background: var(--bg);
+}
+
+
+/* ----------------------------------------------------------
+   21. PHONES (under 600px): extra rules for the new features
+   ---------------------------------------------------------- */
+@media (max-width: 600px) {
+
+  /* The nav sits under the site name, so undo the "push right" */
+  .main-nav {
+    margin-left: 0;
+  }
+
+  /* Put the moon/sun button in the top-right corner of the header */
+  .theme-toggle {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.5rem;
+  }
+
+  /* Slightly smaller breathing area on narrow screens */
+  .breathing-stage {
+    width: 200px;
+    height: 200px;
+  }
+
+  .breathing-circle {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Let section intro paragraphs use the full content width */
+.content-section > p.section-intro {
+  max-width: none;
+}

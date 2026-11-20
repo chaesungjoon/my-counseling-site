@@ -33,6 +33,11 @@
         <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
       </ul>
     </nav>
+
+    <!-- Dark/light mode button (script.js makes it work) -->
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Dark mode" aria-pressed="false">
+      <span class="theme-icon" aria-hidden="true">🌙</span>
+    </button>
   </header>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -54,6 +59,7 @@
         <li><a href="#articles">Self-help articles</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#appointment">Request an appointment</a></li>
+        <li><a href="#breathing">Breathing exercise</a></li>
       </ul>
     </nav>
 
@@ -147,6 +153,27 @@
       </div>
     </section>
 
+    <!-- ===== GUIDED BREATHING EXERCISE (interactive: see js/script.js) ===== -->
+    <section class="content-section" id="breathing" aria-labelledby="breathing-heading">
+      <p class="eyebrow">Try it now</p>
+      <h2 id="breathing-heading">Guided box breathing</h2>
+      <p class="section-intro">Press start and follow the circle: breathe in as it grows, hold, breathe out as it shrinks, and hold again. Each step lasts four seconds. Stop anytime, and return to your normal breathing if you feel lightheaded.</p>
+
+      <div class="breathing-widget">
+        <div class="breathing-stage">
+          <div class="breathing-circle" id="breathing-circle">
+            <span class="breathing-text" id="breathing-text" aria-live="polite">Ready</span>
+            <span class="breathing-count" id="breathing-count" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="button-group">
+          <button type="button" class="btn btn-primary" id="breathing-start">Start</button>
+          <button type="button" class="btn btn-secondary" id="breathing-stop" disabled>Stop</button>
+        </div>
+        <p class="breathing-rounds" id="breathing-rounds">Rounds completed: 0</p>
+      </div>
+    </section>
+    
     <!-- ===== FAQ: click a question to open its answer (built-in HTML <details>, no JavaScript needed) ===== -->
     <section class="content-section" id="faq" aria-labelledby="faq-heading">
       <p class="eyebrow">Questions</p>
@@ -194,7 +221,7 @@
       </div>
 
       <!-- Form card (JavaScript validation will be added in Step 7) -->
-      <form class="card appointment-form" id="appointment-form">
+        <form class="card appointment-form" id="appointment-form" novalidate>
         <h3>Appointment request</h3>
 
         <div class="form-group">
